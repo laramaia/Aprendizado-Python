@@ -44,7 +44,6 @@ def validar_email(email):
 
 
 def validar_senha(senha):
-    # while len(senha) < 8 or senha == senha.lower() or senha == senha.upper() or not any (simbolo in senha for simbolo in simbolos):  
     if len(senha) < 8:
         print("Senha possui menos de 8 caracteres. Tente novamente.")
         return False
@@ -80,4 +79,3 @@ print("")
 email_login = input("E-mail: ")
 senha_login = input("Senha: ")
 print(login(email_login, senha_login))
-print("")
