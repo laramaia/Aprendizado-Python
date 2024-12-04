@@ -1,0 +1,20 @@
+print("---Editor de Texto---")
+
+texto = input("Escreva....\n")
+menu = int(input("O que deseja fazer (selecione o número correspondente)?\n[1] Acrescentar texto.\n[2] Remover texto.\n[3] Contar palavras.\n[4] Substituir texto\n\n"))
+
+# Acrescentar texto
+# Remover texto
+# Contar texto
+if menu == 3:
+    palavra_para_contar = input("Insira qual palavra deseja contar: ")
+    contador = texto.count(palavra_para_contar)
+    print(contador)
+
+# Substituir texto
+if menu == 4:
+    texto_antigo = input("Insira o texto a ser alterado: ")
+    novo_texto = input("Por qual mensagem deseja substituir? ")
+    print(" ")
+    texto = texto.replace(texto_antigo, novo_texto)
+    print(texto)
