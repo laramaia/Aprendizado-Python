@@ -15,50 +15,54 @@ def pegar_mensagem(mensagem):
             ## Loop
             print("Texto não encontrado.")
 
+sair = "N"
 
-print("---Editor de Texto---")
+while sair == "N":
+    print("---Editor de Texto---")
 
-texto = input("Escreva....\n")
-menu = int(input("O que deseja fazer (selecione o número correspondente)?\n\n[1] Acrescentar texto.\n[2] Remover texto.\n[3] Contar palavras.\n[4] Substituir texto\n\n"))
+    texto = input("Escreva....\n")
+    menu = int(input("O que deseja fazer (selecione o número correspondente)?\n\n[1] Acrescentar texto.\n[2] Remover texto.\n[3] Contar palavras.\n[4] Substituir texto\n\n"))
 
-# Acrescentar texto
-if menu == 1:
-    ## Criar lista para armazenar texto modificado
-    novo_texto = [] 
-    texto_a_modificar, lista_texto, i = pegar_mensagem(texto)
-    texto_adicionado = input("Insira aqui o que deseja adicionar: ")
+    # Acrescentar texto
+    if menu == 1:
+        ## Criar lista para armazenar texto modificado
+        novo_texto = [] 
+        texto_a_modificar, lista_texto, i = pegar_mensagem(texto)
+        texto_adicionado = input("Insira aqui o que deseja adicionar: ")
 
-    ## Percorrer cada palavra dentro da lista de palavras
-    for palavra in lista_texto:
-        ## Adiciona texto original na nova lista
-        nova_lista_texto.append(palavra)
-        ## Enquanto adiciona cada palavra, verifica se é igual à palavra que quer modificar
-        if palavra == texto_a_modificar:
-            ## Caso seja, acrescenta texto
-            nova_lista_texto.append(texto_adicionado)
+        ## Percorrer cada palavra dentro da lista de palavras
+        for palavra in lista_texto:
+            ## Adiciona texto original na nova lista
+            novo_texto.append(palavra)
+            ## Enquanto adiciona cada palavra, verifica se é igual à palavra que quer modificar
+            if palavra == texto_a_modificar:
+                ## Caso seja, acrescenta texto
+                novo_texto.append(texto_adicionado)
 
-    print(nova_lista_texto)
+        print(nova_lista_texto)
 
-# Remover texto
-elif menu == 2:
-    texto_a_modificar, lista_texto, i = pegar_mensagem(texto)
-    # Percorrer lista_texto para modificar remover todas as palavras iguais as que o usuário escolher (a fazer)
-    lista_texto.pop(i)
-    print(lista_texto)
+    # Remover texto
+    elif menu == 2:
+        texto_a_modificar, lista_texto, i = pegar_mensagem(texto)
+        # Percorrer lista_texto para modificar remover todas as palavras iguais as que o usuário escolher (a fazer)
+        lista_texto.pop(i)
+        print(" ".join(lista_texto))
 
-# Contar texto
-elif menu == 3:
-    palavra_para_contar = input("Insira qual palavra deseja contar: ")
-    contador = texto.count(palavra_para_contar)
-    print(contador)
+    # Contar texto
+    elif menu == 3:
+        palavra_para_contar = input("Insira qual palavra deseja contar: ")
+        contador = texto.count(palavra_para_contar)
+        print(contador)
 
-# Substituir texto
-elif menu == 4:
-    texto_antigo = input("Insira o texto a ser alterado: ")
-    novo_texto = input("Por qual mensagem deseja substituir? ")
-    print(" ")
-    texto = texto.replace(texto_antigo, novo_texto)
-    print(texto)
+    # Substituir texto
+    elif menu == 4:
+        texto_antigo = input("Insira o texto a ser alterado: ")
+        novo_texto = input("Por qual mensagem deseja substituir? ")
+        print(" ")
+        texto = texto.replace(texto_antigo, novo_texto)
+        print(texto)
 
-else:
-    print("Opção inválida.")
+    else:
+        print("Opção inválida.")
+
+    sair = input("Deseja sair? [S/N]")
