@@ -1,8 +1,9 @@
+import time
+
 # ---Funções---
 def buscar_mensagem(mensagem):
     while True:
         trecho_alvo = input("Qual palavra deseja modificar? ")
-        print(" ")
 
         if " " in trecho_alvo:
             print("No momento, só é possível selecionar uma palavra.")
@@ -39,17 +40,19 @@ def modificar_mensagem(acao, lista_mensagem, trecho_alvo, novo_trecho=None):
     return nova_lista
 
 # ---Código Principal---
+print("="*100 + "\n" + " " * 40 + "Editor de Texto\n" + "="*100)
 sair = "N"
+
 while sair == "N":
-    print("---Editor de Texto---\n")
-    texto = input("Escreva....\n\n")
-    menu = int(input("O que deseja fazer (selecione o número correspondente)?\n\n[1] Inserir palavra.\n[2] Excluir palavra.\n[3] Contar palavra.\n[4] Substituir texto\n\n"))
+    texto = input("\nEscreva....\n\n")
+    menu = int(input("\n\nO que deseja fazer (selecione o número correspondente)?\n\n[1] Inserir palavra.\n[2] Excluir palavra.\n[3] Contar palavra.\n[4] Substituir texto\n\n"))
+    print(" ")
     print(" ")
 
     # Acrescentar texto
     if menu == 1:
         palavra_alvo, lista_texto = buscar_mensagem(texto)
-        palavra_nova = input("O que deseja inserir? ")
+        palavra_nova = input("Insira a nova palavra: ")
         novo_texto = modificar_mensagem("adicionar", lista_texto, palavra_alvo, palavra_nova)
         print(f"Texto atualizado!\n\n{' '.join(novo_texto)}")
 
@@ -70,7 +73,7 @@ while sair == "N":
     # Substituir texto
     elif menu == 4:
         palavra_alvo, lista_texto = buscar_mensagem(texto)
-        palavra_nova = input("Insira o novo trecho: ")
+        palavra_nova = input("Insira a nova palavra: ")
         print(" ")
         novo_texto = texto.replace(palavra_alvo, palavra_nova)
         print(f"Texto atualizado!\n\n{novo_texto}")
@@ -78,5 +81,9 @@ while sair == "N":
     else:
         print("Opção inválida.")
 
+    print(" ")
     sair = input("Deseja sair [S/N]? ").upper()
     print(" ")
+    for x in range(5):
+        print(".")
+        time.sleep(1)
